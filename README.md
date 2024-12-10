@@ -1,4 +1,4 @@
-- django-admin startproject src
+- django-admin startproject src .
 - python3 manage.py startapp myapp
 - Add myapp in src/settings.py
 - Add templates/, forms.py, urls.py in myapp
@@ -50,3 +50,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 - python3 manage.py migrate
 - python3 manage.py createsuperuser
 - python3 manage.py runserver
+
+- create urls, views, templates in myapp
+- register myapp/urls in src/urls
+
+- create models
+- python3 manage.py makemigrations
+- python3 manage.py migrate
