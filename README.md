@@ -4,7 +4,6 @@
 - Add templates/, forms.py, urls.py in myapp
 
 ## Postgres
-- pip3 install psycopg2-binary
 ```sh
 sudo systemctl status postgresql
 sudo -i -u postgres
@@ -18,6 +17,7 @@ psql -U myuser -d mydatabase
 ```
 
 - src/settings.py
+
 ```python
 DATABASES = {
     'default': {
@@ -32,12 +32,14 @@ DATABASES = {
 ```
 
 ## .env file in root project
-- pip install python-dotenv
 - generate secret key
+
 ```sh
 python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
+
 ### src/settings.py
+
 ```python
 import os
 from dotenv import load_dotenv
@@ -57,3 +59,16 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 - create models
 - python3 manage.py makemigrations
 - python3 manage.py migrate
+
+### Media
+```
+MEDIA_RUL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+```
+```
+from django.conf.urls import static
+from django.conf import settings
+urlpatterns = [
+    path('admin/', admin.site.urls),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
